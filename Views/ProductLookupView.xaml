@@ -1,0 +1,27 @@
+<UserControl x:Class="SWP.Views.ProductLookupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="24">
+        <TextBlock Text="Tra cứu sản phẩm và tồn kho" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,14">
+            <TextBox x:Name="TxtTuKhoa" Width="280" ToolTip="Tìm theo mã hoặc tên sản phẩm" TextChanged="TxtTuKhoa_TextChanged"/>
+            <CheckBox x:Name="ChkDuoiDinhMuc" Content="Chỉ hiện hàng dưới định mức tồn tối thiểu" Margin="16,0,0,0"
+                      VerticalAlignment="Center" Checked="Filter_Changed" Unchecked="Filter_Changed"/>
+            <Button Content="Làm mới" Style="{StaticResource BtnSecondary}" Width="90" Margin="16,0,0,0" Click="BtnLamMoi_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="GridSanPham">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã" Binding="{Binding Ma}" Width="90"/>
+                <DataGridTextColumn Header="Tên sản phẩm" Binding="{Binding Ten}" Width="*"/>
+                <DataGridTextColumn Header="Nhóm hàng" Binding="{Binding NhomHang.Ten}" Width="140"/>
+                <DataGridTextColumn Header="ĐVT" Binding="{Binding DonViTinh}" Width="80"/>
+                <DataGridTextColumn Header="Tồn kho" Binding="{Binding TonKho}" Width="90"/>
+                <DataGridTextColumn Header="Tồn tối thiểu" Binding="{Binding TonToiThieu}" Width="100"/>
+                <DataGridTextColumn Header="Giá vốn bình quân" Binding="{Binding GiaVonBinhQuan, StringFormat={}{0:N0}}" Width="130"/>
+                <DataGridTextColumn Header="Ghi chú" Binding="{Binding GhiChu}" Width="160"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

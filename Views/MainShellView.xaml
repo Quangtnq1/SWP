@@ -1,0 +1,62 @@
+<Window x:Class="SWP.Views.MainShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quản lý kho vật tư nội bộ" Height="850" Width="1200"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource ColorBg}"
+        MinHeight="600" MinWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ===== SIDEBAR ===== -->
+        <DockPanel Grid.Column="0" Background="{StaticResource ColorSidebar}">
+            <StackPanel DockPanel.Dock="Top" Margin="20,20,20,24">
+                <TextBlock Text="KHO VẬT TƯ" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="TxtTenNguoiDung" Foreground="#9CA3AF" FontSize="12" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TxtVaiTro" Foreground="#60A5FA" FontSize="11" FontWeight="SemiBold" Margin="0,2,0,0"/>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Bottom" Margin="12,0,12,16">
+                <Button Content="Đổi mật khẩu" Style="{StaticResource SidebarButton}" Click="BtnDoiMatKhau_Click"/>
+                <Button Content="Đăng xuất" Style="{StaticResource SidebarButton}" Click="BtnDangXuat_Click"/>
+            </StackPanel>
+
+            <!-- Bọc trong ScrollViewer vì danh sách menu có thể dài hơn chiều cao cửa sổ (nhất là tài khoản
+                 Quản lý, thấy được menu của cả Thủ kho + Kế toán + Quản lý cộng lại), không có ScrollViewer
+                 thì phần menu ở dưới cùng (Người dùng, Nhật ký thao tác) sẽ bị cắt mất, không cách nào bấm tới. -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="12,0">
+                    <!-- Chung: ai đăng nhập cũng thấy -->
+                    <Button Content="🏠  Tổng quan" Style="{StaticResource SidebarButton}" Click="BtnDashboard_Click"/>
+                    <Button Content="🔍  Tra cứu sản phẩm" Style="{StaticResource SidebarButton}" Click="BtnTraCuu_Click"/>
+
+                    <!-- Thủ kho -->
+                    <TextBlock x:Name="LblThuKho" Text="THỦ KHO" Foreground="#6B7280" FontSize="10" FontWeight="Bold" Margin="10,16,0,4"/>
+                    <Button x:Name="BtnPhieuNhapThuKho" Content="📥  Phiếu nhập kho" Style="{StaticResource SidebarButton}" Click="BtnPhieuNhap_Click"/>
+                    <Button x:Name="BtnPhieuXuatThuKho" Content="📤  Phiếu xuất kho" Style="{StaticResource SidebarButton}" Click="BtnPhieuXuat_Click"/>
+                    <Button x:Name="BtnTheKho" Content="📇  Thẻ kho" Style="{StaticResource SidebarButton}" Click="BtnTheKho_Click"/>
+
+                    <!-- Kế toán -->
+                    <TextBlock x:Name="LblKeToan" Text="KẾ TOÁN" Foreground="#6B7280" FontSize="10" FontWeight="Bold" Margin="10,16,0,4"/>
+                    <Button x:Name="BtnPhieuNhapKeToan" Content="📥  Duyệt phiếu nhập" Style="{StaticResource SidebarButton}" Click="BtnPhieuNhap_Click"/>
+                    <Button x:Name="BtnPhieuXuatKeToan" Content="📤  Duyệt phiếu xuất" Style="{StaticResource SidebarButton}" Click="BtnPhieuXuat_Click"/>
+                    <Button x:Name="BtnSanPham" Content="📦  Sản phẩm" Style="{StaticResource SidebarButton}" Click="BtnSanPham_Click"/>
+                    <Button x:Name="BtnNhomHang" Content="🏷️  Nhóm hàng" Style="{StaticResource SidebarButton}" Click="BtnNhomHang_Click"/>
+                    <Button x:Name="BtnNhaCungCap" Content="🚚  Nhà cung cấp" Style="{StaticResource SidebarButton}" Click="BtnNhaCungCap_Click"/>
+                    <Button x:Name="BtnBoPhan" Content="🏢  Bộ phận" Style="{StaticResource SidebarButton}" Click="BtnBoPhan_Click"/>
+                    <Button x:Name="BtnBaoCao" Content="📊  Báo cáo" Style="{StaticResource SidebarButton}" Click="BtnBaoCao_Click"/>
+
+                    <!-- Quản lý -->
+                    <TextBlock x:Name="LblQuanLy" Text="QUẢN LÝ" Foreground="#6B7280" FontSize="10" FontWeight="Bold" Margin="10,16,0,4"/>
+                    <Button x:Name="BtnNguoiDung" Content="👤  Người dùng" Style="{StaticResource SidebarButton}" Click="BtnNguoiDung_Click"/>
+                    <Button x:Name="BtnNhatKy" Content="📜  Nhật ký thao tác" Style="{StaticResource SidebarButton}" Click="BtnNhatKy_Click"/>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+
+        <!-- ===== NỘI DUNG ===== -->
+        <ContentControl x:Name="ContentArea" Grid.Column="1"/>
+    </Grid>
+</Window>

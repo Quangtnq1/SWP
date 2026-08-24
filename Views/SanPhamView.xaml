@@ -1,0 +1,25 @@
+<UserControl x:Class="SWP.Views.SanPhamView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="24">
+        <TextBlock Text="Sản phẩm" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="+ Thêm sản phẩm" Style="{StaticResource BtnPrimary}" Width="140" Click="BtnThem_Click"/>
+            <Button Content="Sửa" Style="{StaticResource BtnSecondary}" Width="80" Margin="8,0,0,0" Click="BtnSua_Click"/>
+            <Button Content="Ngừng sử dụng" Style="{StaticResource BtnDanger}" Width="120" Margin="8,0,0,0" Click="BtnNgungSuDung_Click"/>
+            <Button Content="Làm mới" Style="{StaticResource BtnSecondary}" Width="90" Margin="8,0,0,0" Click="BtnLamMoi_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="GridSanPham">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã" Binding="{Binding Ma}" Width="90"/>
+                <DataGridTextColumn Header="Tên" Binding="{Binding Ten}" Width="*"/>
+                <DataGridTextColumn Header="Nhóm hàng" Binding="{Binding NhomHang.Ten}" Width="130"/>
+                <DataGridTextColumn Header="ĐVT" Binding="{Binding DonViTinh}" Width="70"/>
+                <DataGridTextColumn Header="Tồn" Binding="{Binding TonKho}" Width="70"/>
+                <DataGridCheckBoxColumn Header="Đang dùng" Binding="{Binding DangSuDung}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

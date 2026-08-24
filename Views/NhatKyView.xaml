@@ -1,0 +1,32 @@
+<UserControl x:Class="SWP.Views.NhatKyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="24">
+        <TextBlock Text="Nhật ký thao tác" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,14">
+            <StackPanel Margin="0,0,16,0">
+                <TextBlock Text="Từ ngày" Style="{StaticResource FieldLabel}"/>
+                <DatePicker x:Name="DpTuNgay" Width="140" SelectedDateChanged="Loc_Changed"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,16,0">
+                <TextBlock Text="Đến ngày" Style="{StaticResource FieldLabel}"/>
+                <DatePicker x:Name="DpDenNgay" Width="140" SelectedDateChanged="Loc_Changed"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Hành động" Style="{StaticResource FieldLabel}"/>
+                <ComboBox x:Name="CboHanhDong" Width="140" SelectionChanged="Loc_Changed"/>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="GridKetQua">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian, StringFormat={}{0:dd/MM/yyyy HH:mm:ss}}" Width="150"/>
+                <DataGridTextColumn Header="Người thực hiện" Binding="{Binding TenDangNhap}" Width="130"/>
+                <DataGridTextColumn Header="Hành động" Binding="{Binding HanhDong}" Width="100"/>
+                <DataGridTextColumn Header="Đối tượng" Binding="{Binding DoiTuong}" Width="130"/>
+                <DataGridTextColumn Header="Mô tả" Binding="{Binding MoTa}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,84 @@
+<Window x:Class="SWP.Views.PhieuNhapDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="Root"
+        Title="Phiếu nhập kho" Height="640" Width="800"
+        WindowStartupLocation="CenterOwner" Background="White">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TxtTieuDe" Grid.Row="0" FontSize="17" FontWeight="Bold" Margin="0,0,0,14"/>
+
+        <!-- Thông tin chung của phiếu -->
+        <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,14">
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="Ngày nhập" Style="{StaticResource FieldLabel}"/>
+                <DatePicker x:Name="DpNgayNhap"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="Nhà cung cấp" Style="{StaticResource FieldLabel}"/>
+                <ComboBox x:Name="CboNhaCungCap" DisplayMemberPath="Ten"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="Số hóa đơn" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="TxtSoHoaDon"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Người giao hàng" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="TxtNguoiGiaoHang"/>
+            </StackPanel>
+        </UniformGrid>
+
+        <!-- Mini-form thêm dòng chi tiết (chỉ hiện khi lập phiếu mới) -->
+        <Border Grid.Row="2" Background="{StaticResource ColorBg}" CornerRadius="6" Padding="12" Margin="0,0,0,10" x:Name="PanelThemDong">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="200" Margin="0,0,8,0">
+                    <TextBlock Text="Sản phẩm" Style="{StaticResource FieldLabel}"/>
+                    <ComboBox x:Name="CboSanPham" DisplayMemberPath="Ten"/>
+                </StackPanel>
+                <StackPanel Width="100" Margin="0,0,8,0">
+                    <TextBlock Text="Nhập" Style="{StaticResource FieldLabel}"/>
+                    <TextBox x:Name="TxtSoLuong"/>
+                </StackPanel>
+                <!-- Không có ô Đơn giá: giá lấy từ giá cố định đặt sẵn trên sản phẩm ở màn Danh mục. -->
+                <Button Content="+ Thêm vào phiếu" Style="{StaticResource BtnSecondary}" Width="130" VerticalAlignment="Bottom" Click="BtnThemDong_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Danh sách dòng chi tiết đã thêm -->
+        <DataGrid x:Name="GridChiTiet" Grid.Row="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sản phẩm" Binding="{Binding SanPham.Ten}" Width="220"/>
+                <DataGridTextColumn Header="Nhập" Binding="{Binding SoLuong}" Width="100"/>
+                <DataGridTextColumn Header="Đơn giá" Binding="{Binding DonGia, StringFormat={}{0:N0}}" Width="110"/>
+                <DataGridTextColumn Header="Thành tiền" Binding="{Binding ThanhTien, StringFormat={}{0:N0}}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10,0,0" x:Name="PanelXoaDong">
+            <Button Content="Xóa dòng đã chọn" Style="{StaticResource BtnDanger}" Width="140" Click="BtnXoaDong_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Row="5" Margin="0,14,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Tổng tiền: " FontWeight="Bold"/>
+                <TextBlock x:Name="TxtTongTien" FontWeight="Bold" Foreground="{StaticResource ColorPrimary}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Đóng" Style="{StaticResource BtnSecondary}" Width="90" Margin="0,0,8,0" Click="BtnDong_Click"/>
+                <Button x:Name="BtnLuu" Content="Lưu phiếu" Style="{StaticResource BtnPrimary}" Width="110" Click="BtnLuu_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

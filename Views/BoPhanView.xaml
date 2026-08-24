@@ -1,0 +1,24 @@
+<UserControl x:Class="SWP.Views.BoPhanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="24">
+        <TextBlock Text="Bộ phận" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="+ Thêm bộ phận" Style="{StaticResource BtnPrimary}" Width="130" Click="BtnThem_Click"/>
+            <Button Content="Sửa" Style="{StaticResource BtnSecondary}" Width="80" Margin="8,0,0,0" Click="BtnSua_Click"/>
+            <Button Content="Ngừng hoạt động" Style="{StaticResource BtnDanger}" Width="130" Margin="8,0,0,0" Click="BtnNgungHoatDong_Click"/>
+            <Button Content="Làm mới" Style="{StaticResource BtnSecondary}" Width="90" Margin="8,0,0,0" Click="BtnLamMoi_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="GridBoPhan">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã" Binding="{Binding Ma}" Width="80"/>
+                <DataGridTextColumn Header="Tên bộ phận" Binding="{Binding Ten}" Width="*"/>
+                <DataGridTextColumn Header="Trưởng bộ phận" Binding="{Binding TruongBoPhan}" Width="160"/>
+                <DataGridTextColumn Header="Số nhân sự" Binding="{Binding SoNhanSu}" Width="90"/>
+                <DataGridCheckBoxColumn Header="Hoạt động" Binding="{Binding DangHoatDong}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>
