@@ -42,10 +42,7 @@ public partial class LoginView : Window
             return;
         }
 
-        AuditLogService.Log(db, Session.CurrentUser, "DANGNHAP", "NguoiDung", user.Id, $"Đăng nhập thành công: {user.TenDangNhap}");
-        db.SaveChanges();
-
-        
+        // Chép sang class riêng thay vì cất thẳng "user": bản ghi DB còn dính MatKhauHash,
         // không nên rải đi khắp app.
         var nguoiDangNhap = new NguoiDangNhap();
         nguoiDangNhap.Id = user.Id;

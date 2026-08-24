@@ -13,7 +13,7 @@ public partial class NhatKyView : UserControl
 
         DpTuNgay.SelectedDate = DateTime.Today.AddMonths(-1);
         DpDenNgay.SelectedDate = DateTime.Today;
-        CboHanhDong.ItemsSource = new[] { "(Tất cả)", "THEM", "SUA", "XOA", "DUYET", "HUY", "DANGNHAP" };
+        CboHanhDong.ItemsSource = new[] { "(Tất cả)", "THEM", "SUA", "XOA", "DUYET", "HUY" };
         CboHanhDong.SelectedIndex = 0;
 
         DateTime tuNgay;
