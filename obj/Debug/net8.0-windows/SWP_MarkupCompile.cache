@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\QuangTN\Desktop\SWP\SWP\App.xaml
-22-911128441
+231317090043
 
-48-424280210
+49120712232
 227-984769817
-Views\BaoCaoView.xaml;Views\BoPhanDialog.xaml;Views\BoPhanView.xaml;Views\ChangePasswordDialog.xaml;Views\DashboardView.xaml;Views\InputDialog.xaml;Views\LoginView.xaml;Views\MainShellView.xaml;Views\NguoiDungView.xaml;Views\NhaCungCapDialog.xaml;Views\NhaCungCapView.xaml;Views\NhatKyView.xaml;Views\NhomHangDialog.xaml;Views\NhomHangView.xaml;Views\PhieuNhapDialog.xaml;Views\PhieuNhapListView.xaml;Views\PhieuXuatDialog.xaml;Views\PhieuXuatListView.xaml;Views\ProductLookupView.xaml;Views\SanPhamDialog.xaml;Views\SanPhamView.xaml;Views\TheKhoView.xaml;
+Views\BaoCaoView.xaml;Views\BoPhanDialog.xaml;Views\BoPhanView.xaml;Views\ChangePasswordDialog.xaml;Views\DashboardView.xaml;Views\InputDialog.xaml;Views\LoginView.xaml;Views\MainShellView.xaml;Views\NguoiDungDialog.xaml;Views\NguoiDungView.xaml;Views\NhaCungCapDialog.xaml;Views\NhaCungCapView.xaml;Views\NhatKyView.xaml;Views\NhomHangDialog.xaml;Views\NhomHangView.xaml;Views\PhieuNhapDialog.xaml;Views\PhieuNhapListView.xaml;Views\PhieuXuatDialog.xaml;Views\PhieuXuatListView.xaml;Views\ProductLookupView.xaml;Views\SanPhamDialog.xaml;Views\SanPhamView.xaml;Views\TheKhoView.xaml;
 
 False
 

@@ -16,7 +16,7 @@ public static class NguoiDungService
     {
         // Cố ý không dọn MatKhauHash (phải giữ nguyên ký tự đặc biệt) và DienThoai (cần luật riêng cho số).
         user.TenDangNhap = VanBanHelper.LamSachTenDangNhap(user.TenDangNhap);
-        user.HoTen = VanBanHelper.LamSachVanBan(user.HoTen);
+        user.HoTen = VanBanHelper.LamSachChuVaSo(user.HoTen);
 
         if (user.TenDangNhap == "")
         {
@@ -63,18 +63,4 @@ public static class NguoiDungService
         return (true, null);
     }
 
-    // Không xóa vật lý được vì phiếu nhập/xuất tham chiếu tài khoản làm người lập/người duyệt.
-    public static void KhoaTaiKhoan(int id)
-    {
-        using var db = new QuanLyKhoVatTuContext();
-        var user = db.NguoiDungs.Find(id);
-        if (user is null)
-        {
-            return;
-        }
-
-        user.DangHoatDong = false;
-        AuditLogService.Log(db, Session.CurrentUser, "SUA", "NguoiDung", id, $"Khóa tài khoản {user.TenDangNhap}");
-        db.SaveChanges();
-    }
 }

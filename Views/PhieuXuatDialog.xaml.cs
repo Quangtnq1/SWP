@@ -94,9 +94,14 @@ public partial class PhieuXuatDialog : Window
             return;
         }
 
-        if (!decimal.TryParse(TxtSoLuongYeuCau.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var slYeuCau) || slYeuCau <= 0)
+        if (!int.TryParse(TxtSoLuongYeuCau.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var slYeuCau) || slYeuCau <= 0)
         {
-            MessageBox.Show("Số lượng yêu cầu phải là số lớn hơn 0.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Số lượng yêu cầu phải là số nguyên lớn hơn 0.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        if (slYeuCau > 10000)
+        {
+            MessageBox.Show("Số lượng yêu cầu không được vượt quá 10.000.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 

@@ -43,23 +43,33 @@ public partial class SanPhamDialog : Window
             TxtGhiChu.Text = sp.GhiChu;
             CboNhomHang.SelectedItem = ((List<NhomHang>)CboNhomHang.ItemsSource).Find(n => n.Id == sp.NhomHangId);
             TxtDonViTinh.Text = sp.DonViTinh;
-            TxtGia.Text = sp.GiaVonBinhQuan.ToString(CultureInfo.InvariantCulture);
-            TxtTonToiThieu.Text = sp.TonToiThieu.ToString(CultureInfo.InvariantCulture);
+            TxtGia.Text = ((int)sp.GiaVonBinhQuan).ToString(CultureInfo.InvariantCulture);
+            TxtTonToiThieu.Text = ((int)sp.TonToiThieu).ToString(CultureInfo.InvariantCulture);
             ChkDangSuDung.IsChecked = sp.DangSuDung;
         }
     }
 
     private void BtnLuu_Click(object sender, RoutedEventArgs e)
     {
-        if (!decimal.TryParse(TxtGia.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var gia) || gia < 0)
+        if (!int.TryParse(TxtGia.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var gia) || gia < 0)
         {
-            MessageBox.Show("Giá phải là số không âm.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Giá phải là số nguyên không âm.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        if (gia > 100000000)
+        {
+            MessageBox.Show("Giá không được vượt quá 100.000.000.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
-        if (!decimal.TryParse(TxtTonToiThieu.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var tonToiThieu))
+        if (!int.TryParse(TxtTonToiThieu.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var tonToiThieu) || tonToiThieu < 0)
         {
-            MessageBox.Show("Tồn tối thiểu phải là số.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Tồn tối thiểu phải là số nguyên không âm.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        if (tonToiThieu > 10000)
+        {
+            MessageBox.Show("Tồn tối thiểu không được vượt quá 10.000.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 

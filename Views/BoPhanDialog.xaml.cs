@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using SWP.Models;
@@ -45,11 +46,21 @@ public partial class BoPhanDialog : Window
 
     private void BtnLuu_Click(object sender, RoutedEventArgs e)
     {
-        int? soNhanSu;
-        if (int.TryParse(TxtSoNhanSu.Text, out var sl))
+        int? soNhanSu = null;
+        if (!string.IsNullOrWhiteSpace(TxtSoNhanSu.Text))
+        {
+            if (!int.TryParse(TxtSoNhanSu.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var sl) || sl < 0)
+            {
+                MessageBox.Show("Số nhân sự phải là số nguyên không âm.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (sl > 10000)
+            {
+                MessageBox.Show("Số nhân sự không được vượt quá 10.000.", "Không thể lưu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             soNhanSu = sl;
-        else
-            soNhanSu = null;
+        }
 
         var bp = new BoPhan();
         bp.Id = _id;

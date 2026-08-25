@@ -166,3 +166,6 @@ C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\BoPhanView.g.cs
 C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\NhaCungCapView.g.cs
 C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\NhomHangView.g.cs
 C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\SanPhamView.g.cs
+C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\SWP.sourcelink.json
+C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\NguoiDungDialog.baml
+C:\Users\QuangTN\Desktop\SWP\SWP\obj\Debug\net8.0-windows\Views\NguoiDungDialog.g.cs

@@ -95,9 +95,14 @@ public partial class PhieuNhapDialog : Window
             return;
         }
 
-        if (!decimal.TryParse(TxtSoLuong.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var slNhap) || slNhap <= 0)
+        if (!int.TryParse(TxtSoLuong.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out var slNhap) || slNhap <= 0)
         {
-            MessageBox.Show("Số lượng nhập phải là số lớn hơn 0.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Số lượng nhập phải là số nguyên lớn hơn 0.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        if (slNhap > 10000)
+        {
+            MessageBox.Show("Số lượng nhập không được vượt quá 10.000.", "Không thể thêm dòng", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 

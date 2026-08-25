@@ -19,9 +19,9 @@ public static class DanhMucService
     public static (bool Success, string? LoiMessage) LuuSanPham(SanPham sp)
     {
         sp.Ma = VanBanHelper.LamSachMa(sp.Ma);
-        sp.Ten = VanBanHelper.LamSachVanBan(sp.Ten);
-        sp.DonViTinh = VanBanHelper.LamSachVanBan(sp.DonViTinh);
-        sp.GhiChu = VanBanHelper.LamSachVanBan(sp.GhiChu);
+        sp.Ten = VanBanHelper.LamSachChuVaSo(sp.Ten);
+        sp.DonViTinh = VanBanHelper.LamSachChuVaSo(sp.DonViTinh);
+        sp.GhiChu = VanBanHelper.LamSachVanBan(sp.GhiChu); // Ghi chú: được miễn, cho phép dấu câu
 
         if (sp.Ma == "")
         {
@@ -104,8 +104,8 @@ public static class DanhMucService
     public static (bool Success, string? LoiMessage) LuuNhomHang(NhomHang nh)
     {
         nh.Ma = VanBanHelper.LamSachMa(nh.Ma);
-        nh.Ten = VanBanHelper.LamSachVanBan(nh.Ten);
-        nh.MoTa = VanBanHelper.LamSachVanBan(nh.MoTa);
+        nh.Ten = VanBanHelper.LamSachChuVaSo(nh.Ten);
+        nh.MoTa = VanBanHelper.LamSachVanBan(nh.MoTa); // Mô tả: cùng nhóm với Ghi chú, được miễn, cho phép dấu câu
 
         if (nh.Ma == "")
         {
@@ -175,9 +175,9 @@ public static class DanhMucService
     {
         // DienThoai và MaSoThue cố ý không dọn — cần luật riêng cho chuỗi số.
         ncc.Ma = VanBanHelper.LamSachMa(ncc.Ma);
-        ncc.Ten = VanBanHelper.LamSachVanBan(ncc.Ten);
-        ncc.DiaChi = VanBanHelper.LamSachVanBan(ncc.DiaChi);
-        ncc.NguoiLienHe = VanBanHelper.LamSachVanBan(ncc.NguoiLienHe);
+        ncc.Ten = VanBanHelper.LamSachChuVaSo(ncc.Ten);
+        ncc.DiaChi = VanBanHelper.LamSachVanBan(ncc.DiaChi); // Địa chỉ: được miễn, cho phép dấu câu
+        ncc.NguoiLienHe = VanBanHelper.LamSachChuVaSo(ncc.NguoiLienHe);
 
         if (ncc.Ma == "")
         {
@@ -186,6 +186,10 @@ public static class DanhMucService
         if (ncc.Ten == "")
         {
             return (false, "Tên nhà cung cấp không được để trống.");
+        }
+        if (ncc.NguoiLienHe == "")
+        {
+            return (false, "Người liên hệ không được để trống.");
         }
 
         using var db = new QuanLyKhoVatTuContext();
@@ -244,8 +248,8 @@ public static class DanhMucService
     public static (bool Success, string? LoiMessage) LuuBoPhan(BoPhan bp)
     {
         bp.Ma = VanBanHelper.LamSachMa(bp.Ma);
-        bp.Ten = VanBanHelper.LamSachVanBan(bp.Ten);
-        bp.TruongBoPhan = VanBanHelper.LamSachVanBan(bp.TruongBoPhan);
+        bp.Ten = VanBanHelper.LamSachChuVaSo(bp.Ten);
+        bp.TruongBoPhan = VanBanHelper.LamSachChuVaSo(bp.TruongBoPhan);
 
         if (bp.Ma == "")
         {
@@ -254,6 +258,10 @@ public static class DanhMucService
         if (bp.Ten == "")
         {
             return (false, "Tên bộ phận không được để trống.");
+        }
+        if (bp.TruongBoPhan == "")
+        {
+            return (false, "Trưởng bộ phận không được để trống.");
         }
 
         using var db = new QuanLyKhoVatTuContext();

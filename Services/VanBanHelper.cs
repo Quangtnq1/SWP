@@ -12,6 +12,10 @@ public static class VanBanHelper
 
     private static readonly Regex ChiChuVaSo = new("[^a-zA-Z0-9]");
 
+    // Dùng cho ô "chỉ cho chữ và số" (Tên, Họ tên...) — KHÁC ChiChuVaSo ở chỗ giữ tiếng Việt có dấu và khoảng trắng
+    // giữa các từ, chỉ xóa dấu câu/ký hiệu. \p{L} = mọi chữ cái Unicode (bao gồm chữ có dấu tiếng Việt).
+    private static readonly Regex KyTuKhongPhaiChuSo = new(@"[^\p{L}0-9\s]");
+
     public static string LamSachVanBan(string? input)
     {
         if (input == null)
@@ -19,6 +23,17 @@ public static class VanBanHelper
 
         var daXoaKyTuRac = KyTuRac.Replace(input, "");
         var daGomDauCach = NhieuDauCach.Replace(daXoaKyTuRac, " ");
+        return daGomDauCach.Trim();
+    }
+
+    // Ô bắt buộc "chỉ chữ và số": xóa hết dấu câu/ký hiệu, giữ nguyên chữ tiếng Việt có dấu và khoảng trắng.
+    public static string LamSachChuVaSo(string? input)
+    {
+        if (input == null)
+            return "";
+
+        var daXoaDauCau = KyTuKhongPhaiChuSo.Replace(input, "");
+        var daGomDauCach = NhieuDauCach.Replace(daXoaDauCau, " ");
         return daGomDauCach.Trim();
     }
 

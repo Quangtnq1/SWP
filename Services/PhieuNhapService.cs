@@ -43,9 +43,18 @@ public static class PhieuNhapService
         DateTime ngayNhap, int? nhaCungCapId, string? soHoaDon, string? nguoiGiaoHang, string? ghiChu,
         List<ChiTietNhapInput> chiTiet)
     {
-        soHoaDon = VanBanHelper.LamSachVanBan(soHoaDon);
-        nguoiGiaoHang = VanBanHelper.LamSachVanBan(nguoiGiaoHang);
-        ghiChu = VanBanHelper.LamSachVanBan(ghiChu);
+        soHoaDon = VanBanHelper.LamSachChuVaSo(soHoaDon);
+        nguoiGiaoHang = VanBanHelper.LamSachChuVaSo(nguoiGiaoHang);
+        ghiChu = VanBanHelper.LamSachVanBan(ghiChu); // Ghi chú: được miễn, cho phép dấu câu
+
+        if (soHoaDon == "")
+        {
+            return (false, "Số hóa đơn không được để trống.");
+        }
+        if (nguoiGiaoHang == "")
+        {
+            return (false, "Người giao hàng không được để trống.");
+        }
 
         // RB07: phải có tối thiểu 1 dòng chi tiết
         if (chiTiet is null || chiTiet.Count == 0)
@@ -60,6 +69,8 @@ public static class PhieuNhapService
             // RB03: số lượng, đơn giá phải > 0
             if (ct.SoLuong <= 0 || ct.DonGia <= 0)
                 return (false, "Số lượng và đơn giá phải lớn hơn 0.");
+            if (ct.SoLuong > 10000)
+                return (false, "Số lượng nhập không được vượt quá 10.000.");
         }
 
         var nguoiDangNhap = Session.CurrentUser;

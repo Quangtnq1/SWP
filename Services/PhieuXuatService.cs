@@ -42,9 +42,9 @@ public static class PhieuXuatService
         DateTime ngayXuat, string loaiXuat, int boPhanId, string nguoiNhan, string lyDoXuat, string? ghiChu,
         List<ChiTietXuatInput> chiTiet)
     {
-        nguoiNhan = VanBanHelper.LamSachVanBan(nguoiNhan);
-        lyDoXuat = VanBanHelper.LamSachVanBan(lyDoXuat);
-        ghiChu = VanBanHelper.LamSachVanBan(ghiChu);
+        nguoiNhan = VanBanHelper.LamSachChuVaSo(nguoiNhan);
+        lyDoXuat = VanBanHelper.LamSachVanBan(lyDoXuat); // Lý do: được miễn, cho phép dấu câu
+        ghiChu = VanBanHelper.LamSachVanBan(ghiChu); // Ghi chú: được miễn, cho phép dấu câu
 
         if (nguoiNhan == "")
         {
@@ -65,6 +65,8 @@ public static class PhieuXuatService
         {
             if (ct.SoLuongYeuCau <= 0)
                 return (false, "Số lượng yêu cầu phải lớn hơn 0.");
+            if (ct.SoLuongYeuCau > 10000)
+                return (false, "Số lượng yêu cầu không được vượt quá 10.000.");
         }
 
         var nguoiDangNhap = Session.CurrentUser;

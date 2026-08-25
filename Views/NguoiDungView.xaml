@@ -1,54 +1,24 @@
 <UserControl x:Class="SWP.Views.NguoiDungView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid Margin="24">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="320"/>
-        </Grid.ColumnDefinitions>
+    <DockPanel Margin="24">
+        <TextBlock Text="Quản lý người dùng" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
 
-        <DockPanel Grid.Column="0" Margin="0,0,16,0">
-            <TextBlock Text="Quản lý người dùng" Style="{StaticResource PageTitle}" DockPanel.Dock="Top"/>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,14">
-                <Button Content="+ Thêm tài khoản" Style="{StaticResource BtnPrimary}" Width="140" Click="BtnThem_Click"/>
-                <Button Content="Sửa" Style="{StaticResource BtnSecondary}" Width="80" Margin="8,0,0,0" Click="BtnSua_Click"/>
-                <Button Content="Đặt lại mật khẩu" Style="{StaticResource BtnSecondary}" Width="140" Margin="8,0,0,0" Click="BtnDatLaiMatKhau_Click"/>
-                <Button Content="Khóa tài khoản" Style="{StaticResource BtnDanger}" Width="120" Margin="8,0,0,0" Click="BtnKhoaTaiKhoan_Click"/>
-            </StackPanel>
-            <DataGrid x:Name="GridNguoiDung">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Tên đăng nhập" Binding="{Binding TenDangNhap}" Width="130"/>
-                    <DataGridTextColumn Header="Họ tên" Binding="{Binding HoTen}" Width="180"/>
-                    <DataGridTextColumn Header="Vai trò" Binding="{Binding VaiTro}" Width="100"/>
-                    <DataGridTextColumn Header="Điện thoại" Binding="{Binding DienThoai}" Width="120"/>
-                    <DataGridCheckBoxColumn Header="Hoạt động" Binding="{Binding DangHoatDong}" Width="90"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,14">
+            <Button Content="+ Thêm tài khoản" Style="{StaticResource BtnPrimary}" Width="140" Click="BtnThem_Click"/>
+            <Button Content="Sửa" Style="{StaticResource BtnSecondary}" Width="80" Margin="8,0,0,0" Click="BtnSua_Click"/>
+            <Button Content="Đặt lại mật khẩu" Style="{StaticResource BtnSecondary}" Width="140" Margin="8,0,0,0" Click="BtnDatLaiMatKhau_Click"/>
+            <Button Content="Làm mới" Style="{StaticResource BtnSecondary}" Width="90" Margin="8,0,0,0" Click="BtnLamMoi_Click"/>
+        </StackPanel>
 
-        <Border x:Name="FormNguoiDung" Grid.Column="1" Background="White" CornerRadius="8" Padding="16"
-                BorderBrush="{StaticResource ColorBorder}" BorderThickness="1" VerticalAlignment="Top" Visibility="Collapsed">
-            <StackPanel>
-                <TextBlock Text="Tên đăng nhập" Style="{StaticResource FieldLabel}"/>
-                <TextBox x:Name="TxtTenDangNhap" Margin="0,0,0,10"/>
-                <TextBlock Text="Họ tên" Style="{StaticResource FieldLabel}"/>
-                <TextBox x:Name="TxtHoTen" Margin="0,0,0,10"/>
-                <TextBlock Text="Vai trò" Style="{StaticResource FieldLabel}"/>
-                <ComboBox x:Name="CboVaiTro" Margin="0,0,0,10"/>
-                <TextBlock Text="Điện thoại" Style="{StaticResource FieldLabel}"/>
-                <TextBox x:Name="TxtDienThoai" Margin="0,0,0,10"/>
-                <CheckBox x:Name="ChkDangHoatDong" Content="Đang hoạt động" Margin="0,0,0,10"/>
-
-                <StackPanel x:Name="PanelMatKhauMoi">
-                    <TextBlock Text="Mật khẩu ban đầu" Style="{StaticResource FieldLabel}"/>
-                    <TextBox x:Name="TxtMatKhauMoi" Margin="0,0,0,16"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Hủy" Style="{StaticResource BtnSecondary}" Width="80" Margin="0,0,8,0" Click="BtnHuy_Click"/>
-                    <Button Content="Lưu" Style="{StaticResource BtnPrimary}" Width="80" Click="BtnLuu_Click"/>
-                </StackPanel>
-            </StackPanel>
-        </Border>
-    </Grid>
+        <DataGrid x:Name="GridNguoiDung">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tên đăng nhập" Binding="{Binding TenDangNhap}" Width="130"/>
+                <DataGridTextColumn Header="Họ tên" Binding="{Binding HoTen}" Width="180"/>
+                <DataGridTextColumn Header="Vai trò" Binding="{Binding VaiTro}" Width="100"/>
+                <DataGridTextColumn Header="Điện thoại" Binding="{Binding DienThoai}" Width="120"/>
+                <DataGridCheckBoxColumn Header="Hoạt động" Binding="{Binding DangHoatDong}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </UserControl>
