@@ -1,3 +1,4 @@
+// Read-only aggregate queries for the reporting workflow: in-out-balance, stock card, cost by department, low stock.
 using System;
 using System.Collections.Generic;
 using System.Linq;
