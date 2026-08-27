@@ -1,3 +1,4 @@
+// Login, session creation and password reset for NguoiDangNhap accounts.
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SWP.Models;
