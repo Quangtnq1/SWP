@@ -1,3 +1,4 @@
+// Goods issue: create and approve/cancel PhieuXuat vouchers; approval checks all lines before deducting any stock.
 using System;
 using System.Collections.Generic;
 using System.Linq;
