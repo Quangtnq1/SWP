@@ -1,3 +1,4 @@
+// Read-side queries over the activity log (NhatKyThaoTac) with date/action/object filters.
 using System;
 using System.Collections.Generic;
 using System.Linq;
