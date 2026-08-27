@@ -1,3 +1,4 @@
+// Goods receipt: create, edit, approve/reject and cancel PhieuNhap vouchers; approval adds to stock on hand.
 using System;
 using System.Collections.Generic;
 using System.Linq;
