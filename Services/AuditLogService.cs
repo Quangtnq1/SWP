@@ -1,3 +1,4 @@
+// Writes append-only entries to NhatKyThaoTac inside the same transaction as the data change it records.
 using System;
 using SWP.Models;
 
