@@ -1,3 +1,4 @@
+// CRUD for master data: products, item groups, suppliers and departments.
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SWP.Models;
